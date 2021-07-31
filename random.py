@@ -1,7 +1,7 @@
 import math
 import time
 from time import sleep
-print("Random.py 0.0.1")
+print("Random.py 1")
 f = []
 
 def current_milli_time():
