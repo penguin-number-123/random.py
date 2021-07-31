@@ -18,14 +18,14 @@ def r():
     seed = (a*seed + c) % b
     return seed
 def rand():
-    for i in range(100):
+    for i in range(10):
         LCG(current_milli_time())
         f.append(r())
-        sleep(0.0001)
+        sleep(0.00005)
 def penguinrandom():
     rand()
     t = 0
-    s = f[current_milli_time() % 100]
+    s = f[current_milli_time() % 10]
     t ^= t<< 36
     t ^= t<<16
     t ^= s^(s<< 35)
@@ -34,5 +34,5 @@ g = []
 for i in range(10):            
     print(penguinrandom())
     g.append(penguinrandom())
-print(g)
+
 
