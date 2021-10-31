@@ -21,7 +21,7 @@ def rand():
     for i in range(10):
         LCG(current_milli_time())
         f.append(r())
-        sleep(0.000092018)
+        sleep(0.0000318)
 def penguinrandom():
     rand()
     t = 0
@@ -32,7 +32,6 @@ def penguinrandom():
     return (t * current_milli_time() // 10)
 g = []
 temp = 0
-for i in range(100):            
-    temp+=len(str(penguinrandom()))
-print(temp/100)
+for i in range(10):            
+    print(penguinrandom())
 
