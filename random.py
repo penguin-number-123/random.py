@@ -1,7 +1,7 @@
 import math
 import time
 from time import sleep
-print("Random.py 1")
+print("Random.py v.1.0.1")
 f = []
 
 def current_milli_time():
@@ -10,18 +10,19 @@ global seed
 def LCG(a):
     global seed
     seed = a
-def r():
-    a = 39081209809
-    b = 2 ** 31
+def r(a):
+    b = 2 ** 127
     c = 49094842449
     global seed
     seed = (a*seed + c) % b
     return seed
 def rand():
+    LCG(current_milli_time())
+    f.append(r(current_milli_time()))
     for i in range(10):
-        LCG(current_milli_time())
-        f.append(r())
-        sleep(0.0000318)
+        LCG(f[-1])
+        f.append(r(current_milli_time()))
+        sleep(0.0000317)
 def penguinrandom():
     rand()
     t = 0
@@ -29,9 +30,16 @@ def penguinrandom():
     t ^= t<< 36
     t ^= t<<16
     t ^= s^(s<< 35)
-    return (t * current_milli_time() // 10)
+    if (current_milli_time()^23)%2==0:
+      t ^=s>>10^t
+    else:
+      t^=s<<10^t
+    return (t * 5239002234 // 10)%current_milli_time()
 g = []
 temp = 0
-for i in range(10):            
+x = current_milli_time()
+print(x)
+for i in range(100):
     print(penguinrandom())
-
+print(current_milli_time()-x)
+#Highest is 887 ms, lowest is 239 ms, seems to not exceed 1s most of the time.
